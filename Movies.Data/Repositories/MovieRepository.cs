@@ -14,7 +14,12 @@ namespace Movies.Data.Repositories
 
         public Movie Add(Movie movie)
         {
-            var newMovie = _context.Movies.Add(movie);
+            var newMovie = _context.Movies.Add(new Movie
+            {
+                Genre = movie.Genre,
+                Title = movie.Title,
+                ReleaseYear = movie.ReleaseYear
+            });
             _context.SaveChanges();
             return newMovie.Entity;
         }

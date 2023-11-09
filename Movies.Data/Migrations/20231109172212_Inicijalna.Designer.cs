@@ -11,8 +11,8 @@ using Movies.Data.Models;
 namespace Movies.Data.Migrations
 {
     [DbContext(typeof(moviesContext))]
-    [Migration("20231107175351_inicijalna")]
-    partial class inicijalna
+    [Migration("20231109172212_Inicijalna")]
+    partial class Inicijalna
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,7 +27,10 @@ namespace Movies.Data.Migrations
             modelBuilder.Entity("Movies.Data.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Genre")
                         .IsRequired()
